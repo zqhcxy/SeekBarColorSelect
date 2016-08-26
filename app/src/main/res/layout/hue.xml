@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/material_blue_grey_800">
+
+    <!--<com.calea.echo.view.font_views.FontTextView-->
+        <!--android:id="@+id/dial_title"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/material_blue_grey_900"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:paddingBottom="8.0dip"-->
+        <!--android:paddingLeft="16.0dip"-->
+        <!--android:paddingRight="16.0dip"-->
+        <!--android:paddingTop="8.0dip"-->
+        <!--android:text="@string/theme_color"-->
+        <!--android:textColor="@color/material_teal_200"-->
+        <!--android:textSize="16.0sp"/>-->
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/color_layout"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="100.0dip"-->
+        <!--android:layout_below="@+id/dial_title"-->
+        <!--android:padding="16.0dip">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/color"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@drawable/shape_mood_message"/>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:padding="8.0dip"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/ic_start_indigo"-->
+            <!--android:tint="@color/white"/>-->
+    <!--</RelativeLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/hue_layout"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/color_layout"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<com.calea.echo.view.font_views.FontTextView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/material_blue_grey_900"-->
+            <!--android:paddingLeft="16.0dip"-->
+            <!--android:paddingRight="16.0dip"-->
+            <!--android:paddingTop="8.0dip"-->
+            <!--android:text="@string/hue"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="15.0sp"/>-->
+
+        <!--<SeekBar-->
+            <!--android:id="@+id/dial_seekbar"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@color/material_blue_grey_900"-->
+            <!--android:max="99"-->
+            <!--android:paddingBottom="8.0dip"-->
+            <!--android:paddingTop="4.0dip"-->
+            <!--android:progress="63"/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="8.0dip"-->
+            <!--android:layout_marginTop="8.0dip">-->
+
+            <!--<com.calea.echo.view.font_views.FontTextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_toLeftOf="@id/advanced_switch"-->
+                <!--android:paddingLeft="16.0dip"-->
+                <!--android:text="@string/advanced_custom"-->
+                <!--android:textColor="@color/material_teal_200"-->
+                <!--android:textSize="16.0sp"/>-->
+
+            <!--<android.support.v7.widget.SwitchCompat-->
+                <!--android:id="@+id/advanced_switch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginRight="16.0dip"-->
+                <!--android:background="#00000000"/>-->
+        <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/advanced_layout"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/hue_layout"-->
+        <!--android:orientation="vertical"-->
+        <!--android:visibility="gone">-->
+
+        <!--<com.calea.echo.view.font_views.FontTextView-->
+            <!--android:id="@id/dial_seekbar_saturation_title"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/material_blue_grey_900"-->
+            <!--android:paddingLeft="16.0dip"-->
+            <!--android:paddingRight="16.0dip"-->
+            <!--android:paddingTop="8.0dip"-->
+            <!--android:text="@string/saturation"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="15.0sp"/>-->
+
+        <!--<SeekBar-->
+            <!--android:id="@+id/dial_seekbar_saturation"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@color/material_blue_grey_900"-->
+            <!--android:max="100"-->
+            <!--android:paddingTop="4.0dip"-->
+            <!--android:progress="66"/>-->
+
+        <!--<com.calea.echo.view.font_views.FontTextView-->
+            <!--android:id="@id/dial_seekbar_luminosity_title"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/material_blue_grey_900"-->
+            <!--android:paddingLeft="16.0dip"-->
+            <!--android:paddingRight="16.0dip"-->
+            <!--android:paddingTop="8.0dip"-->
+            <!--android:text="@string/luminosity"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:textSize="15.0sp"/>-->
+
+        <!--<SeekBar-->
+            <!--android:id="@+id/dial_seekbar_luminosity"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:max="70"-->
+            <!--android:paddingBottom="8.0dip"-->
+            <!--android:paddingTop="4.0dip"-->
+            <!--android:progress="64"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<com.calea.echo.view.font_views.FontButton-->
+        <!--android:id="@id/b_apply"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="50.0dip"-->
+        <!--android:layout_below="@id/advanced_layout"-->
+        <!--android:background="@drawable/button_light_press"-->
+        <!--android:padding="8.0dip"-->
+        <!--android:text="@string/set"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="16.0sp"/>-->
+</RelativeLayout>
