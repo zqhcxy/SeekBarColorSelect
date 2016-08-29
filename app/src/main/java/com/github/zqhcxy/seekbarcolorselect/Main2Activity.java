@@ -133,22 +133,22 @@ public class Main2Activity extends AppCompatActivity implements SurfaceHolder.Ca
                 Iterator<Camera.Size> it=prvSizes.iterator();
                 while(it.hasNext()){
                     Camera.Size s=it.next();
-//                    if(s.width>prvw &&s.width<240&&s.height>prvw&&s.height<320){
-//                        prvw=s.width;
-//                        prvh=s.height;
-//                    }
-                    if (s.width >= PreviewWidth
-                            && s.height >= PreviewHeight) {
-                        PreviewWidth = s.width;
-                        PreviewHeight = s.height;
-                        break;
+                    if(s.width>prvw &&s.width<240&&s.height>prvw&&s.height<320){
+                        prvw=s.width;
+                        prvh=s.height;
                     }
+//                    if (s.width >= PreviewWidth
+//                            && s.height >= PreviewHeight) {
+//                        PreviewWidth = s.width;
+//                        PreviewHeight = s.height;
+//                        break;
+//                    }
                 }
             }
-            p.setPreviewSize(PreviewWidth, PreviewHeight); // 获得摄像区域的大小
-            p.setPictureSize(PreviewWidth, PreviewHeight); // 获得保存图片的大小
+//            p.setPreviewSize(PreviewWidth, PreviewHeight); // 获得摄像区域的大小
+//            p.setPictureSize(PreviewWidth, PreviewHeight); // 获得保存图片的大小
 //            sv.setLayoutParams(new RelativeLayout.LayoutParams(PreviewWidth,PreviewWidth));
-//            p.setPreviewSize(prvw, prvh);
+            p.setPreviewSize(prvw, prvh);
             sv.setLayoutParams(new RelativeLayout.LayoutParams(prvw,prvh));
 //            Toast.makeText(getApplicationContext(), "宽:"+prvw+"高:"+prvh, Toast.LENGTH_LONG).show();
             cam.setParameters(p);

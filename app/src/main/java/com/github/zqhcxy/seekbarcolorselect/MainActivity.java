@@ -2,6 +2,7 @@ package com.github.zqhcxy.seekbarcolorselect;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -13,8 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import app.minimize.com.seek_bar_compat.SeekBarCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         seekbar_s = (SeekBar) findViewById(R.id.seekbar_s);
         seekbar_v = (SeekBar) findViewById(R.id.seekbar_v);
         dial_seekbar=(SeekBar)findViewById(R.id.dial_seekbar);
+        iv1 = (TextView) findViewById(R.id.tv_color_bg);
 
 //        seekBar.setProgressBackgroundColor(Color.TRANSPARENT);
         int[] mColor_h = new int[]{ContextCompat.getColor(this,R.color.cr_hue_1),ContextCompat.getColor(this,R.color.cr_hue_2),
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.getColor(this,R.color.cr_hue_5),ContextCompat.getColor(this,R.color.cr_hue_6),ContextCompat.getColor(this,R.color.cr_hue_7)};
         GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, mColor_h);
         seekBar.setProgressDrawable(gradientDrawable);
-
-        /**
-         * v21以上setProgressDrawable无效，但是setBackgroundDrawable有效，
-         * v21以下setProgressDrawable有效，但是setBackgroundDrawable无效。
-         */
+        changeColor(seekBar);
+                /**
+                 * v21以上setProgressDrawable无效，但是setBackgroundDrawable有效，
+                 * v21以下setProgressDrawable有效，但是setBackgroundDrawable无效。
+                 */
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//api大于21就执行
 //            seekbar_s.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.progress_fill_2));
 //            seekbar_s.setProgressDrawableTiled(ContextCompat.getDrawable(this, R.drawable.hue_s));
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
 //            seekBar.setProgressDrawable(ContextCompat.getDrawable(this, R.drawable.hue));
 //        }
 
-        iv1 = (TextView) findViewById(R.id.tv_color_bg);
         iv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
         seekbarlistener = new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+                if(!fromUser)
+                    return;
 //                switch (seekBar.getId()) {
 //                    case R.id.seekbar:
 //                        break;
@@ -119,61 +120,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeColor(SeekBar mSeekBar) {
 
-//        int color1= Color.HSVToColor(new float[]{seekBar.getProgress(),(1f/360f) *(float)seekbar_s.getProgress(),
-//                (1f/360f) *(float)seekbar_v.getProgress()});
-
         float[] hsv = {seekBar.getProgress(), ((float) seekbar_s.getProgress()) / 100f, ((float) seekbar_v.getProgress()) / 100f};//seekbar_v.getProgress()-100
         int color = Color.HSVToColor(hsv);
 
-
         iv1.setBackgroundColor(color);
-
         if (mSeekBar.getId() == R.id.seekbar) {
             float[] hsv1 = {seekBar.getProgress(), 1f, 1f};//seekbar_v.getProgress()-100
             int color1 = Color.HSVToColor(hsv1);
             createSeekbarColor(color1);
-//            seekbar_s.setProgressBackgroundColor(color1);
-//            seekbar_v.setProgressBackgroundColor(color1);
-//            createSeekbarColor(color1);
-//            initSeekbar(seekbar_s,seekbar_v,seekBar.getProgress());
         }
-//        int[] colorsv = new int[3];
-//        colorsv[0] = getSColor(color,0.3f);
-//        colorsv[1] =getSColor(color,0.6f);
-//        colorsv[2] =getSColor(color,1f);
-//
-//        int[] colorss = new int[3];
-//        colorss[0] = getVColor(Color.BLACK,0.3f);
-//        colorss[1] =getVColor(color,0.6f);
-//        colorss[2] =getVColor(color,1f);
-//        seekbar_s.setProgressBackgroundTintList(new ColorStateList(mPressedEnableStates,colorss));
-//        seekbar_v.setProgressBackgroundTintList(new ColorStateList(mPressedEnableStates,colorsv));
     }
 
     private void createSeekbarColor(int color) {
-        //代码实现的shape
-//        ShapeDrawable myShapeDrawable = new ShapeDrawable(new RectShape());
-        //得到画笔Paint对象并设置其颜色
-//        myShapeDrawable.getPaint().setColor(color);
-//        myShapeDrawable.setBounds(70, 250, 150, 280);
-        //绘制图像
-//        myShapeDrawable.draw(canvas);
         int[] mColor_v = new int[]{getVColor(Color.BLACK,0.3f),color};//确定0.3f
-//        int[] mColor_di = new int[]{color1,color};
         int[] mColor_S = new int[]{ContextCompat.getColor(this,R.color.c9), color};//c9确定
-//        LinearGradient linearGradient=new LinearGradient(0.f, 0.f, 100.0f, 100.0f,mColor_v,null,Shader.TileMode.CLAMP);
         GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, mColor_v);
         GradientDrawable gradientDrawable_s = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, mColor_S);
-//        GradientDrawable gradientDrawable_di = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, mColor_di);
-        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        gradientDrawable_s.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        Rect rect=seekbar_s.getProgressDrawable().getBounds();
         seekbar_s.setProgressDrawable((Drawable) gradientDrawable_s);
         seekbar_v.setProgressDrawable((Drawable) gradientDrawable);
-//        dial_seekbar.setProgressDrawable((Drawable) gradientDrawable_di);
-
-//        seekbar_s.setProgressDrawableTiled(gradientDrawable);
+        seekbar_s.getProgressDrawable().setBounds(rect);
+        seekbar_v.getProgressDrawable().setBounds(rect);
     }
-//     new int[]{android.R.attr.endColor},
     public final static int[][] mPressedEnableStates = new int[][]{
             new int[]{android.R.attr.state_pressed},
         new int[]{android.R.attr.state_enabled},
@@ -183,17 +151,14 @@ public class MainActivity extends AppCompatActivity {
 
             new int[]{-android.R.attr.endColor}};
 
-    private void initSeekbar(SeekBarCompat s_seekbar, SeekBarCompat v_seekbar, int progress) {
-
-        float[] hsv = {progress, 1, 1};//seekbar_v.getProgress()-100
-        int color = Color.HSVToColor(hsv);
-
-        int[] colors = new int[3];
-        colors[0] = color;
-        colors[1] = color;
-        colors[1] = color;
-//        s_seekbar.setProgressBackgroundTintList(new ColorStateList(mPressedEnableStates,colors));
-//        v_seekbar.setProgressBackgroundTintList(new ColorStateList(mPressedEnableStates,colors));
+//    private void initSeekbar(SeekBarCompat s_seekbar, SeekBarCompat v_seekbar, int progress) {
+//        float[] hsv = {progress, 1, 1};//seekbar_v.getProgress()-100
+//        int color = Color.HSVToColor(hsv);
+//
+//        int[] colors = new int[3];
+//        colors[0] = color;
+//        colors[1] = color;
+//        colors[1] = color;
 
         //代码实现的shape
 //        int[] mColor=new int[]{R.color.white,color};
@@ -203,8 +168,7 @@ public class MainActivity extends AppCompatActivity {
 //        gradientDrawable.setStroke(10,-1);
 //        s_seekbar.setProgressDrawableTiled(gradientDrawable);
 //        v_seekbar.setProgressDrawableTiled(gradientDrawable);
-
-    }
+//    }
 
 
     /**
