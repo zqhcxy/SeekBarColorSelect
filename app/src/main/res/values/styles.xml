@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="seekabr_hue_theme" parent="AppTheme">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
 </resources>
